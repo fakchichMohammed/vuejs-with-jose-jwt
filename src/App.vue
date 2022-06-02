@@ -21,9 +21,9 @@ function getToken() {
   }
 }
 
-onMounted(() => { getToken(); });
+getToken() 
 
-onUpdated(() => { getToken() });
+
 </script>
 <template>
   <hr />
