@@ -7,9 +7,14 @@ const decodedToken = ref("");
 const tokenFromLocalStorage = ref("");
 
 function decodeToken() {
-  decodedToken.value = jose.decodeJwt(token.value);
-  console.log(decodedToken.value);
-  window.localStorage.setItem("token", token.value);
+  try {
+    decodedToken.value = jose.decodeJwt(token.value);
+    console.log(decodedToken.value);
+    window.localStorage.setItem("token", token.value);
+    
+  } catch (error) {
+    decodedToken.value = error.message
+  }
 }
 
 function getToken() {
@@ -22,7 +27,6 @@ function getToken() {
 }
 
 getToken() 
-
 
 </script>
 <template>
